@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Navigation } from "lucide-react";
+import { MapPin, Navigation, ArrowUpRight } from "lucide-react";
 
 const venues = [
   {
@@ -30,125 +30,284 @@ const venues = [
 
 export default function Venue() {
   return (
-    <section className="section-transition relative overflow-hidden bg-invitation-ivory px-6 py-24 md:py-32">
-      <div className="invitation-paper absolute inset-0 opacity-70" />
+    <section className="section-transition relative overflow-hidden bg-invitation-ivory px-6 py-28 md:py-36">
+      {/* Paper texture */}
+      <div className="invitation-paper pointer-events-none absolute inset-0 opacity-60" />
 
-      {/* Decorative background elements */}
-      <div className="decorative absolute -left-20 top-20 h-56 w-56 rounded-full border border-invitation-gold/10 md:h-80 md:w-80" />
+      {/* Large decorative circles */}
+      <div className="pointer-events-none absolute -left-40 top-20 h-[420px] w-[420px] rounded-full border border-invitation-gold/10" />
 
-      <div className="decorative absolute -right-20 bottom-20 h-56 w-56 rounded-full border border-invitation-maroon/10 md:h-80 md:w-80" />
+      <div className="pointer-events-none absolute -left-28 top-32 h-[260px] w-[260px] rounded-full border border-invitation-gold/10" />
 
-      <div className="relative z-10 mx-auto max-w-5xl">
+      <div className="pointer-events-none absolute -right-40 bottom-10 h-[420px] w-[420px] rounded-full border border-invitation-maroon/10" />
 
-        {/* Heading */}
+      <div className="pointer-events-none absolute -right-24 bottom-28 h-[260px] w-[260px] rounded-full border border-invitation-maroon/10" />
+
+      {/* Subtle vertical lines */}
+      <div className="pointer-events-none absolute left-[8%] top-0 h-full w-px bg-invitation-gold/[0.06]" />
+      <div className="pointer-events-none absolute right-[8%] top-0 h-full w-px bg-invitation-gold/[0.06]" />
+
+      <div className="relative z-10 mx-auto max-w-6xl">
+
+        {/* ================= HEADING ================= */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.9 }}
+          transition={{ duration: 1 }}
           className="text-center"
         >
-          <p className="text-[9px] uppercase tracking-[0.5em] text-invitation-gold">
-            Find your way to the celebrations
-          </p>
+          {/* Eyebrow */}
+          <div className="flex items-center justify-center gap-4">
+            <span className="h-px w-10 bg-invitation-gold/30" />
 
-          <h2 className="mt-4 font-display text-5xl text-invitation-maroon md:text-6xl">
+            <p className="text-[9px] font-medium uppercase tracking-[0.5em] text-invitation-gold">
+              The Celebrations
+            </p>
+
+            <span className="h-px w-10 bg-invitation-gold/30" />
+          </div>
+
+          {/* Heading */}
+          <h2 className="mt-5 font-display text-5xl leading-none text-invitation-maroon md:text-7xl">
             Our Venues
           </h2>
 
-          <div className="mx-auto mt-5 flex items-center justify-center gap-3">
-            <span className="h-px w-12 bg-invitation-gold/40" />
+          {/* Ornament */}
+          <div className="mx-auto mt-7 flex items-center justify-center gap-4">
+            <span className="h-px w-16 bg-invitation-gold/25" />
 
-            <span className="text-sm text-invitation-gold">
+            <span className="text-xs text-invitation-gold">
               ✦
             </span>
 
-            <span className="h-px w-12 bg-invitation-gold/40" />
+            <span className="h-px w-16 bg-invitation-gold/25" />
           </div>
 
-          <p className="mx-auto mt-6 max-w-xl font-display text-lg italic text-invitation-brown/55 md:text-xl">
-            We look forward to welcoming you at every celebration.
+          {/* Description */}
+          <p className="mx-auto mt-7 max-w-lg font-display text-lg italic leading-relaxed text-invitation-brown/55 md:text-xl">
+            Every celebration has its own place,
+            <br className="hidden md:block" />
+            and every place holds a memory waiting to be made.
           </p>
         </motion.div>
 
-        {/* Venue cards */}
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        {/* ================= VENUE CARDS ================= */}
+        <div className="mt-16 grid gap-7 md:grid-cols-3 md:gap-8">
           {venues.map((venue, index) => (
             <motion.article
               key={venue.number}
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: 0.75,
-                delay: index * 0.12,
+              initial={{
+                opacity: 0,
+                y: 45,
               }}
-              whileHover={{ y: -5 }}
-              className="group border border-invitation-gold/20 bg-invitation-cream/70 p-7 transition-shadow duration-500 hover:shadow-[0_18px_45px_rgba(73,53,42,0.08)] md:p-8"
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              transition={{
+                duration: 0.9,
+                delay: index * 0.15,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              whileHover={{
+                y: -8,
+              }}
+              className="
+                group relative overflow-hidden
+                border border-invitation-gold/20
+                bg-invitation-cream/60
+                px-7 py-8
+                backdrop-blur-[2px]
+                transition-all duration-700
+                hover:border-invitation-gold/40
+                hover:shadow-[0_25px_70px_rgba(73,53,42,0.10)]
+                md:px-8 md:py-9
+              "
             >
-              {/* Number */}
-              <div className="flex items-center justify-between">
-                <span className="font-display text-3xl text-invitation-gold/60">
-                  {venue.number}
-                </span>
+              {/* Inner premium border */}
+              <div className="pointer-events-none absolute inset-2 border border-invitation-gold/[0.07]" />
 
-                <MapPin
-                  size={19}
-                  strokeWidth={1.3}
-                  className="text-invitation-gold"
-                />
+              {/* Hover glow */}
+              <div
+                className="
+                  pointer-events-none absolute
+                  -right-20 -top-20
+                  h-40 w-40
+                  rounded-full
+                  bg-invitation-gold/[0.06]
+                  blur-3xl
+                  opacity-0
+                  transition-opacity duration-700
+                  group-hover:opacity-100
+                "
+              />
+
+              <div className="relative z-10">
+
+                {/* Top Row */}
+                <div className="flex items-start justify-between">
+                  <div>
+                    <span className="font-display text-4xl font-light text-invitation-gold/50">
+                      {venue.number}
+                    </span>
+
+                    <div className="mt-2 h-px w-8 bg-invitation-gold/30 transition-all duration-500 group-hover:w-14" />
+                  </div>
+
+                  <div
+                    className="
+                      flex h-10 w-10 items-center justify-center
+                      rounded-full
+                      border border-invitation-gold/20
+                      transition-all duration-500
+                      group-hover:border-invitation-gold/40
+                      group-hover:rotate-6
+                    "
+                  >
+                    <MapPin
+                      size={17}
+                      strokeWidth={1.2}
+                      className="text-invitation-gold"
+                    />
+                  </div>
+                </div>
+
+                {/* Event */}
+                <div className="mt-9">
+                  <p className="text-[8px] font-medium uppercase tracking-[0.4em] text-invitation-sage">
+                    {venue.event}
+                  </p>
+
+                  <h3
+                    className="
+                      mt-4
+                      max-w-[250px]
+                      font-display
+                      text-[2rem]
+                      leading-[1.08]
+                      text-invitation-maroon
+                      transition-transform
+                      duration-500
+                      group-hover:translate-x-1
+                    "
+                  >
+                    {venue.name}
+                  </h3>
+                </div>
+
+                {/* Divider */}
+                <div className="my-7 h-px w-full bg-invitation-gold/15" />
+
+                {/* Details */}
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <MapPin
+                      size={14}
+                      strokeWidth={1.3}
+                      className="mt-0.5 shrink-0 text-invitation-gold/60"
+                    />
+
+                    <p className="text-sm leading-relaxed text-invitation-brown/65">
+                      {venue.location}
+                    </p>
+                  </div>
+
+                  <p className="pl-7 text-[11px] uppercase tracking-[0.18em] text-invitation-brown/40">
+                    {venue.date}
+                  </p>
+                </div>
+
+                {/* Directions */}
+                <a
+                  href={venue.map}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    relative mt-8 flex w-full
+                    items-center justify-between
+                    overflow-hidden
+                    border border-invitation-gold/25
+                    px-5 py-4
+                    text-[8px]
+                    font-medium
+                    uppercase
+                    tracking-[0.32em]
+                    text-invitation-maroon
+                    transition-all
+                    duration-500
+                    hover:border-invitation-maroon
+                    hover:bg-invitation-maroon
+                    hover:text-invitation-cream
+                  "
+                >
+                  <span className="flex items-center gap-3">
+                    <Navigation
+                      size={13}
+                      strokeWidth={1.3}
+                    />
+
+                    Get Directions
+                  </span>
+
+                  <ArrowUpRight
+                    size={14}
+                    strokeWidth={1.2}
+                    className="
+                      transition-transform
+                      duration-500
+                      group-hover:translate-x-1
+                      group-hover:-translate-y-1
+                    "
+                  />
+                </a>
               </div>
-
-              {/* Event */}
-              <p className="mt-8 text-[8px] uppercase tracking-[0.35em] text-invitation-sage">
-                {venue.event}
-              </p>
-
-              {/* Venue */}
-              <h3 className="mt-3 font-display text-3xl leading-tight text-invitation-maroon">
-                {venue.name}
-              </h3>
-
-              {/* Details */}
-              <div className="mt-6 border-t border-invitation-gold/15 pt-5">
-                <p className="text-sm text-invitation-brown/65">
-                  {venue.location}
-                </p>
-
-                <p className="mt-2 text-xs text-invitation-brown/40">
-                  {venue.date}
-                </p>
-              </div>
-
-              {/* Button */}
-              <a
-                href={venue.map}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-7 inline-flex w-full items-center justify-center gap-2 border border-invitation-gold/35 px-4 py-3 text-[8px] uppercase tracking-[0.3em] text-invitation-maroon transition-all duration-300 hover:bg-invitation-maroon hover:text-invitation-cream"
-              >
-                <Navigation size={13} strokeWidth={1.4} />
-                Get Directions
-              </a>
             </motion.article>
           ))}
         </div>
 
-        {/* Closing */}
+        {/* ================= CLOSING ================= */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 1 }}
-          className="mt-14 text-center"
+          initial={{
+            opacity: 0,
+            y: 15,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            delay: 0.4,
+            duration: 1,
+          }}
+          className="mt-20 text-center"
         >
-          <p className="font-display text-xl italic text-invitation-brown/55 md:text-2xl">
-            Your presence will make every celebration more special.
+          <div className="mx-auto flex items-center justify-center gap-4">
+            <span className="h-px w-14 bg-invitation-gold/20" />
+
+            <span className="text-lg text-invitation-gold/70">
+              ❦
+            </span>
+
+            <span className="h-px w-14 bg-invitation-gold/20" />
+          </div>
+
+          <p className="mx-auto mt-7 max-w-xl font-display text-xl italic leading-relaxed text-invitation-brown/55 md:text-2xl">
+            Your presence will make every celebration
+            <br className="hidden md:block" />
+            more special.
           </p>
 
-          <div className="mt-8 text-xl text-invitation-gold">
-            ❦
-          </div>
+          <p className="mt-6 text-[8px] uppercase tracking-[0.45em] text-invitation-gold/50">
+            We cannot wait to celebrate with you
+          </p>
         </motion.div>
 
       </div>
