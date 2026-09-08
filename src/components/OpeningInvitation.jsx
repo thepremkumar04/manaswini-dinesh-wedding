@@ -1,145 +1,121 @@
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
 
 export default function OpeningInvitation({ onOpen }) {
   return (
-    <motion.section
-      initial={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[90] flex min-h-screen items-center justify-center overflow-hidden bg-invitation-ivory px-6"
-    >
-      {/* Decorative glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-invitation-gold/10 blur-3xl" />
+    <section className="fixed inset-0 z-[100] flex min-h-screen items-center justify-center overflow-hidden bg-invitation-ivory px-5">
 
-      {/* Decorative corners */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.4 }}
-        className="pointer-events-none absolute left-5 top-5 h-24 w-24 border-l border-t border-invitation-gold/40 sm:left-10 sm:top-10 sm:h-32 sm:w-32"
-      />
+      {/* Paper texture */}
+      <div className="invitation-paper absolute inset-0" />
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.4, delay: 0.15 }}
-        className="pointer-events-none absolute bottom-5 right-5 h-24 w-24 border-b border-r border-invitation-gold/40 sm:bottom-10 sm:right-10 sm:h-32 sm:w-32"
-      />
+      {/* Decorative outer frame */}
+      <div className="pointer-events-none absolute inset-3 border border-invitation-gold/50 md:inset-6" />
 
-      {/* Invitation card */}
+      <div className="pointer-events-none absolute inset-5 border border-invitation-gold/15 md:inset-9" />
+
+      {/* Corner ornaments */}
+      <div className="decorative absolute left-7 top-7 text-2xl text-invitation-gold/60 md:left-12 md:top-12 md:text-3xl">
+        ❀
+      </div>
+
+      <div className="decorative absolute right-7 top-7 text-2xl text-invitation-gold/60 md:right-12 md:top-12 md:text-3xl">
+        ❀
+      </div>
+
+      <div className="decorative absolute bottom-7 left-7 rotate-180 text-2xl text-invitation-gold/60 md:bottom-12 md:left-12 md:text-3xl">
+        ❀
+      </div>
+
+      <div className="decorative absolute bottom-7 right-7 rotate-180 text-2xl text-invitation-gold/60 md:bottom-12 md:right-12 md:text-3xl">
+        ❀
+      </div>
+
+      {/* Main content */}
       <motion.div
-        initial={{ opacity: 0, y: 35, scale: 0.96 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
+        initial={{ opacity: 0, y: 25 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{
-          duration: 1.1,
+          duration: 1.2,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="invitation-paper relative z-10 w-full max-w-xl border border-invitation-gold/30 px-7 py-14 text-center shadow-2xl sm:px-14 sm:py-20"
+        className="relative z-10 mx-auto w-full max-w-xl text-center"
       >
+
         {/* Top ornament */}
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mb-8 flex items-center justify-center gap-3"
+          animate={{
+            y: [0, -4, 0],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="text-4xl text-invitation-maroon md:text-5xl"
         >
-          <span className="h-px w-12 bg-invitation-gold/50" />
-
-          <Sparkles
-            size={16}
-            strokeWidth={1.2}
-            className="text-invitation-gold"
-          />
-
-          <span className="h-px w-12 bg-invitation-gold/50" />
+          ❦
         </motion.div>
 
-        {/* Small heading */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.65 }}
-          className="font-sans text-[10px] uppercase tracking-[0.4em] text-invitation-gold sm:text-xs"
-        >
-          Together with their families
-        </motion.p>
+        {/* Invitation */}
+        <p className="mt-8 text-[9px] uppercase tracking-[0.55em] text-invitation-gold">
+          Wedding Invitation
+        </p>
 
-        {/* Names */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-7"
-        >
-          <h1 className="font-display text-5xl leading-none text-invitation-maroon sm:text-7xl">
-            Manaswini
-          </h1>
+        <h1 className="mt-6 font-royal text-5xl font-medium text-invitation-maroon md:text-7xl">
+          Manaswini
+        </h1>
 
-          <p className="my-3 font-display text-2xl italic text-invitation-gold sm:text-3xl">
-            &
-          </p>
+        <p className="my-2 font-display text-3xl italic text-invitation-gold">
+          &
+        </p>
 
-          <h1 className="font-display text-5xl leading-none text-invitation-maroon sm:text-7xl">
-            Dinesh
-          </h1>
-        </motion.div>
+        <h1 className="font-royal text-5xl font-medium text-invitation-maroon md:text-7xl">
+          Dinesh Reddy
+        </h1>
 
         {/* Divider */}
-        <motion.div
-          initial={{ width: 0, opacity: 0 }}
-          animate={{ width: "6rem", opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
-          className="gold-divider mx-auto mt-9 h-px"
-        />
+        <div className="mx-auto mt-8 flex items-center justify-center gap-3">
+          <span className="h-px w-12 bg-invitation-gold/40" />
+          <span className="text-sm text-invitation-gold">
+            ✦
+          </span>
+          <span className="h-px w-12 bg-invitation-gold/40" />
+        </div>
 
         {/* Date */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.25 }}
-          className="mt-7 font-display text-lg tracking-wide text-invitation-brown sm:text-xl"
-        >
-          October 16, 2026
-        </motion.p>
+        <p className="mt-7 font-display text-xl italic text-invitation-brown/65 md:text-2xl">
+          16 October 2026
+        </p>
 
-        {/* Open button */}
+        <p className="mt-2 text-[8px] uppercase tracking-[0.4em] text-invitation-sage">
+          Friday • Tirupati
+        </p>
+
+        {/* Opening button */}
         <motion.button
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
+          type="button"
+          onClick={onOpen}
           whileHover={{
             scale: 1.03,
           }}
           whileTap={{
             scale: 0.97,
           }}
-          onClick={onOpen}
-          className="group mt-10 inline-flex items-center gap-3 border border-invitation-gold bg-invitation-maroon px-8 py-3.5 font-sans text-[10px] uppercase tracking-[0.3em] text-white shadow-lg transition duration-300 hover:bg-invitation-brown sm:px-10"
+          className="mx-auto mt-12 flex items-center justify-center border border-invitation-gold bg-invitation-maroon px-10 py-4 text-[9px] uppercase tracking-[0.4em] text-invitation-cream shadow-[0_12px_35px_rgba(116,31,42,0.15)] transition-all duration-300 hover:bg-invitation-gold"
         >
-          <span>Open Invitation</span>
-
-          <motion.span
-            animate={{ x: [0, 4, 0] }}
-            transition={{
-              duration: 1.4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            →
-          </motion.span>
+          Open Invitation
         </motion.button>
 
-        {/* Bottom text */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.7 }}
-          className="mt-7 font-sans text-[9px] uppercase tracking-[0.25em] text-invitation-brown/50"
-        >
-          A celebration of love & togetherness
-        </motion.p>
+        <p className="mt-5 text-[8px] uppercase tracking-[0.3em] text-invitation-brown/35">
+          Tap to enter
+        </p>
+
+        {/* Bottom ornament */}
+        <div className="mt-10 text-xl text-invitation-gold">
+          ❦
+        </div>
+
       </motion.div>
-    </motion.section>
+
+    </section>
   );
 }
